@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>دار النظارات - المتجر الإلكتروني</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        :root {
+            --orange: #F48120;
+            --orange-dark: #E06D10;
+            --orange-light: #FFF3E8;
+            --orange-glow: rgba(244, 129, 32, 0.25);
+            --white: #FFFFFF;
+            --bg: #FCFCFD;
+            --text: #1A1A1A;
+            --text-light: #6B7280;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow: 0 8px 30px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.1);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font: 'Tajawal', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+            line-height: 1.5;
+            direction: rtl;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -400% 0; }
+            100% { background-position: 400% 0; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(244,129,32,0.3); }
+            50% { box-shadow: 0 0 40px rgba(244,129,32,0.6); }
+        }
+        .animate-in { animation: fadeInUp 0.7s ease both; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        .screen {
+            display: none;
+            min-height: 100vh;
+            position: relative;
+        }
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ============ LOGIN SCREEN - تصميم عصري وآمن ============ */
+        #login-screen {
+            background: radial-gradient(circle at 30% 10%, #FFF8F2 0%, #FFFFFF 70%);
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 28px;
+            padding: 40px 28px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #F48120, #E06D10);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            box-shadow: 0 12px 30px rgba(244, 129, 32, 0.25);
+            animation: pulse 2.5s infinite;
+        }
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--orange);
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+        .brand-sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #c0c0c0;
+            font-size: 0.8rem;
+            margin: 24px 0;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e5e5;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font);
+            transition: var(--transition);
+            background: white;
+            color: #333;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e5e5e5;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+            border-color: #ccc;
+        }
+        .btn-google {
+            background: #ffffff;
+            color: #1f1f1f;
+            border: 1.5px solid #e0e0e0;
+            font-weight: 600;
+        }
+        .btn-guest {
+            background: var(--white);
+            color: var(--orange);
+            border: 2px solid var(--orange);
+            font-weight: 700;
+        }
+        .btn-guest:hover {
+            background: var(--orange-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(244, 129, 32, 0.2);
+        }
+        .privacy-note {
+            color: #9CA3AF;
+            font-size: 0.75rem;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        #google-signin-container {
+            min-height: 48px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ============ FACE CAPTURE ============ */
+        #face-capture-screen {
+            background: #fff;
+            padding: 20px;
+        }
+        .capture-header {
+            text-align: center;
+            padding: 16px 0 20px;
+        }
+        .capture-header h2 {
+            color: var(--orange);
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+        .capture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 700px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        @media (max-width: 600px) {
+            .capture-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+            }
+        }
+        .capture-card {
+            background: #fff;
+            border: 2px dashed #ddd;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .capture-card:hover {
+            border-color: var(--orange);
+            background: #FFFCF8;
+            box-shadow: var(--shadow);
+        }
+        .capture-card.filled {
+            border-style: solid;
+            border-color: #4CAF50;
+            background: #f9fdf9;
+        }
+        .capture-card .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--orange-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+            color: var(--orange);
+        }
+        .capture-card.filled .icon-circle {
+            background: #e8f5e9;
+            color: #4CAF50;
+        }
+        .capture-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            display: none;
+        }
+        .capture-card.filled img {
+            display: block;
+        }
+        .capture-card.filled .placeholder-content {
+            display: none;
+        }
+        .capture-card .placeholder-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .capture-card input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        /* ============ MAIN SCREEN ============ */
+        #main-screen {
+            background: #f9f9f9;
+        }
+        .top-bar {
+            background: #fff;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 12px;
+        }
+        .top-bar .logo-sm {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar .brand-sm {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--orange);
+        }
+        .user-badge {
+            background: var(--orange-light);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--orange-dark);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logout-btn {
+            background: transparent;
+            border: 1px solid #ddd;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            transition: var(--transition);
+            color: #777;
+        }
+        .welcome-section {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: #fff;
+            margin-bottom: 6px;
+        }
+        .welcome-section h1 {
+            font-size: 1.6rem;
+            color: var(--text);
+        }
+        .highlight {
+            color: var(--orange);
+            font-weight: 800;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            padding: 16px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 900px;
+                gap: 20px;
+            }
+        }
+        .category-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 22px 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--orange);
+        }
+        .cat-icon {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .cat-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .admin-fab {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 200;
+            font-family: var(--font);
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: glow 2.5s infinite;
+        }
+        .admin-fab:hover {
+            background: #000;
+            transform: scale(1.05);
+        }
+
+        /* ============ PRODUCTS SCREEN ============ */
+        #products-screen {
+            background: #f9f9f9;
+        }
+        .products-header {
+            background: #fff;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: #555;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+        }
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: #f0f0f0;
+            transform: translateY(-3px);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #fafafa;
+        }
+        .product-info {
+            padding: 14px 16px;
+        }
+        .product-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .product-price {
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            padding: 0 16px 14px;
+            flex-wrap: wrap;
+        }
+        .btn-sm {
+            padding: 9px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font);
+            transition: var(--transition);
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
+        }
+        .btn-try {
+            background: #fff;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+        }
+        .btn-try:hover {
+            background: var(--orange-light);
+        }
+        .btn-select {
+            background: var(--orange);
+            color: #fff;
+        }
+        .btn-select:hover {
+            background: var(--orange-dark);
+        }
+        .admin-actions {
+            display: flex;
+            gap: 6px;
+            padding: 0 16px 10px;
+            flex-wrap: wrap;
+        }
+        .btn-admin-sm {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-family: var(--font);
+            transition: var(--transition);
+        }
+        .add-product-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: #fff;
+            font-size: 1.8rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 150;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============ MODALS ============ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInUp 0.5s ease;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tryon-container canvas {
+            max-width: 100%;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
+            animation: fadeInUp 0.4s ease;
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div class="screen active" id="login-screen">
+        <div class="login-card animate-in">
+            <div class="logo-icon">👁️</div>
+            <div class="brand-title">دار النظارات</div>
+            <div class="brand-sub">الأناقة تبدأ بنظرة واضحة</div>
+            
+            <!-- Google Sign-In -->
+            <div id="google-signin-container">
+                <div id="g_id_onload"
+                     data-client_id="534732338842-abcdefg1234567890.apps.googleusercontent.com"
+                     data-context="signin"
+                     data-ux_mode="popup"
+                     data-callback="handleGoogleResponse"
+                     data-auto_prompt="false"
+                     data-itp_support="true">
+                </div>
+                <div class="g_id_signin"
+                     data-type="standard"
+                     data-shape="pill"
+                     data-theme="outline"
+                     data-text="signin_with"
+                     data-size="large"
+                     data-locale="ar"
+                     data-logo_alignment="center"
+                     data-width="320">
+                </div>
+            </div>
+            
+            <div class="divider">
+                <span>أو</span>
+            </div>
+            
+            <button class="btn btn-guest" onclick="loginAsGuest()">
+                👤 الدخول كضيف
+            </button>
+            
+            <p class="privacy-note">
+                🔒 تسجيل دخول آمن عبر Google. لن نشارك بياناتك مع أي طرف.
+            </p>
+        </div>
+    </div>
+
+    <!-- ==================== FACE CAPTURE SCREEN ==================== -->
+    <div class="screen" id="face-capture-screen">
+        <div class="capture-header">
+            <h2>📸 التقط صور وجهك</h2>
+            <p>نحتاج 3 زوايا لتجربة النظارات بشكل واقعي</p>
+        </div>
+        <div class="capture-grid">
+            <div class="capture-card" id="capture-front">
+                <div class="placeholder-content">
+                    <div class="icon-circle">🧑</div>
+                    <span>الوجه - أمامي</span>
+                </div>
+                <img src="" alt="Front" id="preview-front">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'front')">
+            </div>
+            <div class="capture-card" id="capture-right">
+                <div class="placeholder-content">
+                    <div class="icon-circle">👤</div>
+                    <span>الوجه - يمين</span>
+                </div>
+                <img src="" alt="Right" id="preview-right">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'right')">
+            </div>
+            <div class="capture-card" id="capture-left">
+                <div class="placeholder-content">
+                    <div class="icon-circle">👤</div>
+                    <span>الوجه - يسار</span>
+                </div>
+                <img src="" alt="Left" id="preview-left">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'left')">
+            </div>
+        </div>
+        <div style="text-align:center;padding:20px;">
+            <button class="btn btn-primary" style="max-width:400px;background:var(--orange);color:#fff;border:none;" onclick="goToMain()">
+                ✅ متابعة إلى المتجر
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN SCREEN ==================== -->
+    <div class="screen" id="main-screen">
+        <div class="top-bar">
+            <div class="logo-sm">
+                <span style="font-size:1.5rem;">👁️</span>
+                <span class="brand-sm">دار النظارات</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span class="user-badge" id="user-badge-display">👤 زائر</span>
+                <button class="logout-btn" onclick="logout()">🚪 خروج</button>
+            </div>
+        </div>
+        <div class="welcome-section">
+            <h1>اهلاً بك في <span class="highlight">دار النظارات</span></h1>
+            <p style="color:#777;margin-top:4px;">اختر القسم الذي تريد تصفحه</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" onclick="openProducts('sunglasses')">
+                <span class="cat-icon">🕶️</span>
+                <span class="cat-title">نظارات شمسية</span>
+            </div>
+            <div class="category-card" onclick="openProducts('medical')">
+                <span class="cat-icon">👓</span>
+                <span class="cat-title">نظارات طبية</span>
+            </div>
+            <div class="category-card" onclick="openProducts('contacts')">
+                <span class="cat-icon">👁️</span>
+                <span class="cat-title">عدسات لاصقة</span>
+            </div>
+            <div class="category-card" onclick="openProducts('protection')">
+                <span class="cat-icon">🛡️</span>
+                <span class="cat-title">نظارات حماية</span>
+            </div>
+        </div>
+        <button class="admin-fab" id="admin-fab-btn" style="display:none;" onclick="openAdminPanel()">
+            ⚙️ تغيير
+        </button>
+    </div>
+
+    <!-- ==================== PRODUCTS SCREEN ==================== -->
+    <div class="screen" id="products-screen">
+        <div class="products-header">
+            <button class="back-btn" onclick="goBackToMain()">←</button>
+            <h3 id="products-title">المنتجات</h3>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+        <button class="add-product-btn" id="add-product-fab" style="display:none;" onclick="showAddProductModal()">+</button>
+    </div>
+
+    <!-- ==================== MODAL OVERLAY ==================== -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal-content"></div>
+    </div>
+    <div id="toast-container"></div>
+
+    <script>
+        // ==================== CONFIGURATION ====================
+        const ADMIN_EMAIL = 'motasembelal31@gmail.com';
+        const WHATSAPP_NUMBER = '962790000000'; // استبدل برقم الواتساب مع مفتاح الدولة
+        const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+        
+        let currentUser = null;
+        let isAdmin = false;
+        let currentCategory = null;
+        let selectedFrameForMedical = null;
+        let selectedLensForMedical = null;
+        let prescriptionImage = null;
+
+        // ==================== DATA STORE ====================
+        function getStore() {
+            const data = localStorage.getItem('dar_alnadarat_store');
+            if (data) return JSON.parse(data);
+            const defaults = {
+                sunglasses: [
+                    { id: 'sg1', name: 'نظارة شمسية كلاسيك - أسود', price: 35, image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=300&fit=crop' },
+                    { id: 'sg2', name: 'نظارة شمسية طيار - ذهبي', price: 45, image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=300&fit=crop' },
+                    { id: 'sg3', name: 'نظارة شمسية رياضية - رمادي', price: 50, image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?w=400&h=300&fit=crop' },
+                ],
+                medical_frames: [
+                    { id: 'mf1', name: 'إطار طبي - أسود كلاسيك', price: 60, image: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?w=400&h=300&fit=crop' },
+                    { id: 'mf2', name: 'إطار طبي - شفاف عصري', price: 70, image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop' },
+                ],
+                medical_lenses: [
+                    { id: 'ml1', name: 'عدسة قياسية - بلاستيك', price: 25, description: 'خفيفة الوزن', image: '' },
+                    { id: 'ml2', name: 'عدسة مضادة للانعكاس', price: 45, description: 'طبقة مضادة للوهج', image: '' },
+                ],
+                contacts: [
+                    { id: 'cl1', name: 'عدسات لاصقة - أزرق', price: 40, color: '#4A90D9', description: 'لون أزرق طبيعي', image: '' },
+                    { id: 'cl2', name: 'عدسات لاصقة - عسلي', price: 35, color: '#C8963E', description: 'لون عسلي دافئ', image: '' },
+                ],
+                protection: [
+                    { id: 'pf1', name: 'نظارة حماية - شفافة', price: 15, image: 'https://images.unsplash.com/photo-1508296695146-257a814070b4?w=400&h=300&fit=crop' },
+                ],
+                contact_description: 'عدسات لاصقة عالية الجودة بألوان متعددة. اختاري اللون الذي يناسبك!',
+            };
+            saveStore(defaults);
+            return defaults;
+        }
+        function saveStore(data) { localStorage.setItem('dar_alnadarat_store', JSON.stringify(data)); }
+        function getCategoryData(cat) {
+            const store = getStore();
+            return store[cat] || [];
+        }
+        function saveCategoryData(cat, data) {
+            const store = getStore();
+            store[cat] = data;
+            saveStore(store);
+        }
+
+        // ==================== GOOGLE AUTH ====================
+        function handleGoogleResponse(response) {
+            if (!response || !response.credential) {
+                showToast('❌ فشل تسجيل الدخول');
+                return;
+            }
+            const userData = parseJwt(response.credential);
+            if (!userData || !userData.email) return;
+            
+            currentUser = {
+                email: userData.email,
+                name: userData.name || userData.email.split('@')[0],
+                picture: userData.picture || null,
+                isGuest: false,
+                faceData: null,
+                token: response.credential,
+                loginTime: Date.now()
+            };
+            isAdmin = (currentUser.email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+            
+            const savedFaces = localStorage.getItem('dar_alnadarat_faces_' + currentUser.email);
+            if (savedFaces) {
+                try { currentUser.faceData = JSON.parse(savedFaces); } catch(e) {}
+            }
+            
+            updateUIForUser();
+            if (currentUser.faceData && currentUser.faceData.front) {
+                showScreen('main-screen');
+                updateMainUI();
+                showToast(`✅ أهلاً ${currentUser.name} في دار النظارات`);
+            } else {
+                showScreen('face-capture-screen');
+                resetFaceCapture();
+                showToast('📸 يرجى التقاط صور الوجه');
+            }
+            saveCurrentSession();
+        }
+
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                return JSON.parse(jsonPayload);
+            } catch(e) { return null; }
+        }
+
+        function loginAsGuest() {
+            currentUser = {
+                email: 'guest_' + Date.now() + '@guest.daralnadarat.com',
+                name: 'زائر',
+                isGuest: true,
+                faceData: null,
+                loginTime: Date.now()
+            };
+            isAdmin = false;
+            updateUIForUser();
+            showScreen('face-capture-screen');
+            resetFaceCapture();
+            showToast('👤 تم الدخول كضيف');
+        }
+
+        function logout() {
+            if (currentUser && currentUser.isGuest) {
+                sessionStorage.removeItem('dar_guest_faces');
+            } else if (currentUser && !currentUser.isGuest && currentUser.faceData) {
+                localStorage.setItem('dar_alnadarat_faces_' + currentUser.email, JSON.stringify(currentUser.faceData));
+            }
+            sessionStorage.removeItem('dar_current_session');
+            currentUser = null;
+            isAdmin = false;
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            currentCategory = null;
+            updateUIForUser();
+            showScreen('login-screen');
+            showToast('👋 تم تسجيل الخروج بأمان');
+            if (window.google && window.google.accounts && window.google.accounts.id) {
+                google.accounts.id.disableAutoSelect();
+            }
+        }
+
+        function saveCurrentSession() {
+            if (currentUser && !currentUser.isGuest) {
+                sessionStorage.setItem('dar_current_session', JSON.stringify({
+                    user: currentUser,
+                    isAdmin: isAdmin,
+                    timestamp: Date.now()
+                }));
+            }
+        }
+
+        // ==================== UI HELPERS ====================
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = msg;
+            container.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 400); }, 2500);
+        }
+        function updateUIForUser() {
+            const badge = document.getElementById('user-badge-display');
+            const adminFab = document.getElementById('admin-fab-btn');
+            if (currentUser) {
+                badge.innerHTML = currentUser.picture ? 
+                    `<img src="${currentUser.picture}" style="width:24px;height:24px;border-radius:50%;"> ${currentUser.name}` :
+                    `👤 ${currentUser.name}`;
+                adminFab.style.display = isAdmin ? 'flex' : 'none';
+            } else {
+                badge.textContent = '👤 زائر';
+                adminFab.style.display = 'none';
+            }
+        }
+        function updateMainUI() {
+            updateUIForUser();
+            document.getElementById('add-product-fab').style.display = isAdmin ? 'flex' : 'none';
+        }
+
+        // ==================== FACE CAPTURE ====================
+        function resetFaceCapture() {
+            ['front','right','left'].forEach(angle => {
+                document.getElementById('capture-' + angle).classList.remove('filled');
+                document.getElementById('preview-' + angle).src = '';
+            });
+        }
+        function handleFaceUpload(input, angle) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('preview-' + angle).src = e.target.result;
+                document.getElementById('capture-' + angle).classList.add('filled');
+                if (!currentUser) currentUser = { email: 'guest_'+Date.now(), isGuest: true, faceData: {} };
+                if (!currentUser.faceData) currentUser.faceData = {};
+                currentUser.faceData[angle] = e.target.result;
+                if (currentUser.isGuest) sessionStorage.setItem('dar_guest_faces', JSON.stringify(currentUser.faceData));
+            };
+            reader.readAsDataURL(file);
+        }
+        function goToMain() {
+            if (!currentUser) currentUser = { email: 'guest_'+Date.now(), isGuest: true, faceData: {} };
+            if (!currentUser.faceData) currentUser.faceData = {};
+            if (!currentUser.isGuest) {
+                localStorage.setItem('dar_alnadarat_faces_' + currentUser.email, JSON.stringify(currentUser.faceData));
+            }
+            updateUIForUser();
+            updateMainUI();
+            showScreen('main-screen');
+        }
+
+        // ==================== PRODUCTS ====================
+        function openProducts(cat) {
+            currentCategory = cat;
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            updateMainUI();
+            document.getElementById('products-title').textContent = 
+                {sunglasses:'🕶️ نظارات شمسية', medical:'👓 نظارات طبية', contacts:'👁️ عدسات لاصقة', protection:'🛡️ نظارات حماية'}[cat] || '';
+            document.getElementById('add-product-fab').style.display = isAdmin ? 'flex' : 'none';
+            renderProducts(cat);
+            showScreen('products-screen');
+        }
+        function renderProducts(cat) {
+            const grid = document.getElementById('products-grid');
+            const data = getCategoryData(cat);
+            grid.innerHTML = '';
+            if (cat === 'contacts') {
+                const desc = getStore().contact_description || '';
+                if (desc) {
+                    const descEl = document.createElement('div');
+                    descEl.style.cssText = 'grid-column:1/-1;background:#fff;padding:16px;border-radius:16px;text-align:center;';
+                    descEl.innerHTML = `<strong>📝 وصف:</strong> ${desc}`;
+                    if (isAdmin) descEl.innerHTML += ' <button onclick="editContactDesc()" style="background:var(--orange);color:#fff;border:none;padding:4px 10px;border-radius:12px;font-size:0.7rem;">تعديل</button>';
+                    grid.appendChild(descEl);
+                }
+            }
+            data.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                if (cat === 'contacts') {
+                    card.innerHTML = `
+                        <div style="background:#fafafa;height:160px;display:flex;align-items:center;justify-content:center;">
+                            <div style="width:70px;height:70px;border-radius:50%;background:${p.color};border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,0.2);"></div>
+                        </div>
+                        <div class="product-info"><div class="product-name">${p.name}</div><div class="product-price">${p.price} دينار</div></div>
+                        <div class="product-actions">
+                            <button class="btn-sm btn-try" onclick="tryOnContact('${p.id}')">🔍 تجريب</button>
+                            <button class="btn-sm btn-select" onclick="selectContact('${p.id}')">✅ اختيار</button>
+                        </div>
+                    `;
+                } else if (cat === 'medical') {
+                    card.innerHTML = `
+                        <img src="${p.image}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/><text x=%22150%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22>👓</text></svg>'">
+                        <div class="product-info"><div class="product-name">${p.name}</div><div class="product-price">${p.price} دينار</div></div>
+                        <div class="product-actions">
+                            <button class="btn-sm btn-try" onclick="tryOnProduct('${p.id}','medical')">🔍 تجريب</button>
+                            <button class="btn-sm btn-select" onclick="selectMedicalFrame('${p.id}')">✅ اختيار الإطار</button>
+                        </div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <img src="${p.image}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22><rect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/><text x=%22150%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22>🕶️</text></svg>'">
+                        <div class="product-info"><div class="product-name">${p.name}</div><div class="product-price">${p.price} دينار</div></div>
+                        <div class="product-actions">
+                            <button class="btn-sm btn-try" onclick="tryOnProduct('${p.id}','${cat}')">🔍 تجريب</button>
+                            <button class="btn-sm btn-select" onclick="selectProduct('${p.id}','${cat}')">✅ اختيار</button>
+                        </div>
+                    `;
+                }
+                if (isAdmin) {
+                    const adminDiv = document.createElement('div');
+                    adminDiv.className = 'admin-actions';
+                    adminDiv.innerHTML = `
+                        <button class="btn-admin-sm" onclick="editProduct('${p.id}','${cat}')">✏️ تعديل</button>
+                        <button class="btn-admin-sm" style="color:#e74c3c;border-color:#fcc;" onclick="deleteProduct('${p.id}','${cat}')">🗑️ حذف</button>
+                    `;
+                    card.appendChild(adminDiv);
+                }
+                grid.appendChild(card);
+            });
+        }
+        function goBackToMain() { showScreen('main-screen'); currentCategory = null; }
+
+        // ==================== TRY-ON ====================
+        function tryOnProduct(pid, cat) {
+            const product = getCategoryData(cat).find(p=>p.id===pid);
+            if(!product) return;
+            const face = currentUser?.faceData;
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>🔍 تجربة ${product.name}</h3>
+                <div class="tryon-container"><canvas id="tryon-canvas" width="350" height="350"></canvas></div>
+                <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
+                    <button class="btn-sm" onclick="drawTryOn('front','${product.image}')">أمامي</button>
+                    <button class="btn-sm" onclick="drawTryOn('right','${product.image}')">يمين</button>
+                    <button class="btn-sm" onclick="drawTryOn('left','${product.image}')">يسار</button>
+                </div>
+            `);
+            setTimeout(()=> drawTryOn('front', product.image), 200);
+        }
+        function drawTryOn(angle, glassesImg) {
+            const canvas = document.getElementById('tryon-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            const faceSrc = currentUser?.faceData?.[angle] || currentUser?.faceData?.front;
+            const img = new Image();
+            img.onload = ()=>{
+                ctx.drawImage(img,0,0,canvas.width,canvas.height);
+                const g = new Image();
+                g.onload = ()=> ctx.drawImage(g, canvas.width*0.2, canvas.height*0.2, canvas.width*0.6, canvas.height*0.3);
+                g.src = glassesImg;
+            };
+            img.src = faceSrc || '';
+            if(!faceSrc) { ctx.fillText('الرجاء تحميل صورة الوجه', canvas.width/2, canvas.height/2); }
+        }
+        function tryOnContact(pid) {
+            const p = getCategoryData('contacts').find(x=>x.id===pid);
+            if(!p) return;
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>👁️ تجربة ${p.name}</h3>
+                <div class="tryon-container"><canvas id="tryon-canvas" width="350" height="350"></canvas></div>
+            `);
+            setTimeout(()=>{
+                const canvas = document.getElementById('tryon-canvas');
+                if(!canvas) return;
+                const ctx = canvas.getContext('2d');
+                const faceSrc = currentUser?.faceData?.front;
+                const img = new Image();
+                img.onload = ()=>{
+                    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = 0.5;
+                    ctx.beginPath(); ctx.arc(canvas.width*0.45, canvas.height*0.4, 20, 0, Math.PI*2); ctx.fill();
+                    ctx.beginPath(); ctx.arc(canvas.width*0.55, canvas.height*0.4, 20, 0, Math.PI*2); ctx.fill();
+                };
+                img.src = faceSrc || '';
+            }, 200);
+        }
+
+        // ==================== SELECT & WHATSAPP ====================
+        function selectProduct(pid, cat) {
+            const p = getCategoryData(cat).find(x=>x.id===pid);
+            if(!p) return;
+            sendToWhatsApp(`مرحباً، أرغب في: ${p.name} - ${p.price} دينار\nالصورة: ${p.image}`);
+            closeModal();
+        }
+        function selectMedicalFrame(fid) {
+            selectedFrameForMedical = getCategoryData('medical').find(x=>x.id===fid);
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            showLensModal();
+        }
+        function showLensModal() {
+            const lenses = getStore().medical_lenses;
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>اختر العدسة</h3>
+                ${lenses.map(l=>`<div style="padding:10px;border:1px solid #eee;border-radius:12px;margin:6px;cursor:pointer;" onclick="selectLens('${l.id}')">${l.name} - ${l.price} دينار</div>`).join('')}
+                <div id="prescription-section" style="display:none;margin-top:12px;">
+                    <input type="file" id="prescription-input" accept="image/*" onchange="handlePrescriptionUpload(this)" style="display:none;">
+                    <button class="btn-sm" onclick="document.getElementById('prescription-input').click()">📄 ارفع صورة الفحص</button>
+                    <button class="btn-sm btn-select" onclick="confirmMedicalOrder()">✅ موافق وإرسال</button>
+                </div>
+                ${isAdmin ? '<button class="btn-sm" onclick="showAddLensModal()">➕ إضافة عدسة</button>' : ''}
+            `);
+        }
+        function selectLens(lid) {
+            selectedLensForMedical = getStore().medical_lenses.find(l=>l.id===lid);
+            document.getElementById('prescription-section').style.display = 'block';
+        }
+        function handlePrescriptionUpload(input) {
+            const file = input.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = e => prescriptionImage = e.target.result;
+            reader.readAsDataURL(file);
+        }
+        function confirmMedicalOrder() {
+            if(!selectedFrameForMedical || !selectedLensForMedical) return showToast('اختر الإطار والعدسة');
+            sendToWhatsApp(`طلب نظارة طبية:\n👓 الإطار: ${selectedFrameForMedical.name} - ${selectedFrameForMedical.price} دينار\n🔬 العدسة: ${selectedLensForMedical.name} - ${selectedLensForMedical.price} دينار\n📄 الفحص: ${prescriptionImage ? 'مرفق' : 'غير مرفق'}`);
+            closeModal();
+        }
+        function selectContact(pid) {
+            const p = getCategoryData('contacts').find(x=>x.id===pid);
+            if(!p) return;
+            sendToWhatsApp(`عدسات لاصقة: ${p.name} - ${p.price} دينار - اللون: ${p.color}`);
+            closeModal();
+        }
+        function sendToWhatsApp(msg) {
+            window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // ==================== ADMIN ====================
+        function openAdminPanel() {
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>⚙️ لوحة التحكم</h3>
+                <button class="btn btn-primary" style="background:var(--orange);color:#fff;border:none;" onclick="closeModal();openProducts('sunglasses')">🕶️ النظارات الشمسية</button>
+                <button class="btn btn-primary" style="background:var(--orange);color:#fff;border:none;" onclick="closeModal();openProducts('medical')">👓 النظارات الطبية</button>
+                <button class="btn btn-primary" style="background:var(--orange);color:#fff;border:none;" onclick="closeModal();openProducts('contacts')">👁️ العدسات اللاصقة</button>
+                <button class="btn btn-primary" style="background:var(--orange);color:#fff;border:none;" onclick="closeModal();openProducts('protection')">🛡️ نظارات الحماية</button>
+            `);
+        }
+        function showAddProductModal() {
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>➕ إضافة منتج</h3>
+                <input id="add-name" placeholder="الاسم" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="add-price" type="number" placeholder="السعر" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="add-image" placeholder="رابط الصورة" style="width:100%;margin:6px 0;padding:8px;">
+                ${currentCategory==='contacts' ? '<input id="add-color" placeholder="اللون مثل #F48120" style="width:100%;margin:6px 0;padding:8px;">' : ''}
+                <button class="btn-sm btn-select" onclick="addNewProduct()">✅ إضافة</button>
+            `);
+        }
+        function addNewProduct() {
+            const name = document.getElementById('add-name')?.value.trim();
+            const price = +document.getElementById('add-price')?.value || 0;
+            const image = document.getElementById('add-image')?.value.trim();
+            const color = document.getElementById('add-color')?.value.trim();
+            if(!name) return showToast('الاسم مطلوب');
+            const data = getCategoryData(currentCategory);
+            const newP = { id: 'p_'+Date.now(), name, price, image: image || '' };
+            if(currentCategory==='contacts') newP.color = color || '#ccc';
+            data.push(newP);
+            saveCategoryData(currentCategory, data);
+            closeModal();
+            renderProducts(currentCategory);
+            showToast('تمت الإضافة');
+        }
+        function editProduct(pid, cat) {
+            const p = getCategoryData(cat).find(x=>x.id===pid);
+            if(!p) return;
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>✏️ تعديل</h3>
+                <input id="edit-name" value="${p.name}" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="edit-price" type="number" value="${p.price}" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="edit-image" value="${p.image||''}" style="width:100%;margin:6px 0;padding:8px;">
+                ${cat==='contacts' ? `<input id="edit-color" value="${p.color||''}" style="width:100%;margin:6px 0;padding:8px;">` : ''}
+                <button class="btn-sm btn-select" onclick="saveEditProduct('${pid}','${cat}')">💾 حفظ</button>
+            `);
+        }
+        function saveEditProduct(pid, cat) {
+            const data = getCategoryData(cat);
+            const idx = data.findIndex(x=>x.id===pid);
+            if(idx>=0) {
+                data[idx].name = document.getElementById('edit-name')?.value.trim();
+                data[idx].price = +document.getElementById('edit-price')?.value || 0;
+                data[idx].image = document.getElementById('edit-image')?.value.trim();
+                if(cat==='contacts') data[idx].color = document.getElementById('edit-color')?.value.trim();
+                saveCategoryData(cat, data);
+            }
+            closeModal();
+            renderProducts(cat);
+            showToast('تم الحفظ');
+        }
+        function deleteProduct(pid, cat) {
+            if(!confirm('حذف؟')) return;
+            const data = getCategoryData(cat).filter(x=>x.id!==pid);
+            saveCategoryData(cat, data);
+            renderProducts(cat);
+            showToast('تم الحذف');
+        }
+        function editContactDesc() {
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>تعديل الوصف</h3>
+                <textarea id="edit-desc" rows="4" style="width:100%;">${getStore().contact_description||''}</textarea>
+                <button class="btn-sm btn-select" onclick="saveContactDesc()">حفظ</button>
+            `);
+        }
+        function saveContactDesc() {
+            const store = getStore();
+            store.contact_description = document.getElementById('edit-desc')?.value||'';
+            saveStore(store);
+            closeModal();
+            if(currentCategory==='contacts') renderProducts('contacts');
+        }
+        function showAddLensModal() {
+            showModal(`
+                <button class="close-modal" onclick="closeModal()">✕</button>
+                <h3>إضافة عدسة</h3>
+                <input id="lens-name" placeholder="الاسم" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="lens-price" type="number" placeholder="السعر" style="width:100%;margin:6px 0;padding:8px;">
+                <input id="lens-desc" placeholder="وصف" style="width:100%;margin:6px 0;padding:8px;">
+                <button class="btn-sm btn-select" onclick="addLensItem()">✅ إضافة</button>
+            `);
+        }
+        function addLensItem() {
+            const name = document.getElementById('lens-name')?.value.trim();
+            const price = +document.getElementById('lens-price')?.value || 0;
+            const desc = document.getElementById('lens-desc')?.value.trim();
+            if(!name) return;
+            const store = getStore();
+            store.medical_lenses.push({ id: 'ml_'+Date.now(), name, price, description: desc, image: '' });
+            saveStore(store);
+            closeModal();
+            showToast('تمت الإضافة');
+        }
+
+        function closeModal() { document.getElementById('modal-overlay').classList.remove('active'); }
+        function showModal(html) {
+            document.getElementById('modal-content').innerHTML = html;
+            document.getElementById('modal-overlay').classList.add('active');
+        }
+
+        // ==================== INIT ====================
+        function init() {
+            const saved = sessionStorage.getItem('dar_current_session');
+            if (saved) {
+                try {
+                    const session = JSON.parse(saved);
+                    if (Date.now() - session.timestamp < 2*60*60*1000) {
+                        currentUser = session.user;
+                        isAdmin = session.isAdmin;
+                        if (!currentUser.faceData && !currentUser.isGuest) {
+                            const faces = localStorage.getItem('dar_alnadarat_faces_' + currentUser.email);
+                            if (faces) currentUser.faceData = JSON.parse(faces);
+                        }
+                        updateUIForUser();
+                        updateMainUI();
+                        showScreen('main-screen');
+                    } else {
+                        sessionStorage.removeItem('dar_current_session');
+                        showScreen('login-screen');
+                    }
+                } catch(e) { showScreen('login-screen'); }
+            } else {
+                showScreen('login-screen');
+            }
+            document.getElementById('modal-overlay').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            getStore();
+        }
+        init();
+    </script>
+</body>
+</html>
