@@ -2073,6 +2073,24 @@
         console.log('📱 واتساب:', WHATSAPP_URL);
         console.log('🎨 الألوان: برتقالي #F48120 | أبيض #FFFFFF');
     </script>
+    <script>
+    // ابحث عن كل SVG وبدّلها بصورة logo.png (إذا الصورة موجودة)
+    fetch('logo.png')
+        .then(res => {
+            if (res.ok) {
+                // الصورة موجودة → استبدل كل SVG بـ img
+                document.querySelectorAll('svg').forEach(svg => {
+                    let img = document.createElement('img');
+                    img.src = 'logo.png';
+                    img.alt = 'شعار الموقع';
+                    img.style.width = svg.getAttribute('width') || '50px';
+                    img.style.height = svg.getAttribute('height') || '50px';
+                    svg.parentNode.replaceChild(img, svg);
+                });
+            }
+        })
+        .catch(() => console.log('لا توجد صورة logo.png، يبقى SVG'));
+    </script>
 </body>
 </html>
 ```
