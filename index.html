@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -325,7 +326,7 @@
                 max-width: 320px;
             }
         }
-        .capture-card {
+              .capture-card {
             background: #fff;
             border: 2px dashed #ddd;
             border-radius: var(--radius);
@@ -715,4 +716,1363 @@
             background: var(--orange);
             color: #fff;
             font-size: 1.8rem;
- 
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 150;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .add-product-btn:hover {
+            transform: scale(1.1);
+            background: var(--orange-dark);
+        }
+        /* ============ MODALS ============ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: bounceIn 0.5s ease;
+            position: relative;
+        }
+        .modal h3 {
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+        .modal .close-modal {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal .close-modal:hover {
+            background: #eee;
+        }
+        .tryon-container {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        .tryon-container canvas {
+            max-width: 100%;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+        }
+        .tryon-angles {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .tryon-angle-btn {
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        .tryon-angle-btn.active {
+            background: var(--orange);
+            color: #fff;
+            border-color: var(--orange);
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius-xs);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: #fafafa;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(244, 129, 32, 0.08);
+        }
+        .lens-options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .lens-option-card {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .lens-option-card:hover,
+        .lens-option-card.selected {
+            border-color: var(--orange);
+            background: var(--orange-light);
+        }
+        .prescription-upload {
+            border: 2px dashed #ddd;
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .prescription-upload:hover {
+            border-color: var(--orange);
+            background: #FFFCF8;
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
+            animation: fadeInUp 0.4s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        .color-swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 10px;
+        }
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: var(--transition);
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .color-swatch:hover,
+        .color-swatch.selected {
+            border-color: var(--orange);
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        .color-swatch-label {
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 10px;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+            .btn-sm {
+                font-size: 0.75rem;
+                padding: 7px 10px;
+            }
+            .welcome-section h1 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== LOGIN SCREEN ==================== -->
+    <div class="screen active" id="login-screen">
+        <div class="login-container">
+            <div class="logo-main">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="46" fill="none" stroke="#F48120" stroke-width="3.5"/>
+                    <circle cx="50" cy="50" r="32" fill="none" stroke="#F48120" stroke-width="2" opacity="0.5"/>
+                    <text x="50" y="38" text-anchor="middle" font-size="16" font-weight="900" fill="#F48120" font-family="sans-serif">دار</text>
+                    <text x="50" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#333" font-family="sans-serif">النظارات</text>
+                    <line x1="22" y1="66" x2="78" y2="66" stroke="#F48120" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="brand-name">دار النظارات</div>
+            <div class="brand-subtitle">الأناقة تبدأ بنظرة واضحة</div>
+            <button class="btn btn-google btn-full" onclick="loginWithGoogle()">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23EA4335' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%234285F4' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23FBBC05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.126 17.2-.24 20.47-.24 24c0 3.53.366 6.8 1.26 9.78l7.51-5.19z'/%3E%3Cpath fill='%2334A853' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E" alt="Google">
+                الدخول باستخدام حساب جوجل
+            </button>
+            <div class="divider">أو</div>
+            <button class="btn btn-guest btn-full" onclick="loginAsGuest()">
+                👤 الدخول كضيف
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== FACE CAPTURE SCREEN ==================== -->
+    <div class="screen" id="face-capture-screen">
+        <div class="capture-header animate-fade-in-up">
+            <h2>📸 التقط صور وجهك</h2>
+            <p>نحتاج 3 زوايا لتجربة النظارات بشكل واقعي</p>
+        </div>
+        <div class="capture-grid">
+            <div class="capture-card animate-slide-right delay-1" id="capture-front">
+                <div class="placeholder-content">
+                    <div class="icon-circle">🧑</div>
+                    <span class="capture-label">الوجه - أمامي</span>
+                </div>
+                <img src="" alt="Front" id="preview-front">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'front')" id="input-front">
+            </div>
+            <div class="capture-card animate-fade-in-up delay-2" id="capture-right">
+                <div class="placeholder-content">
+                    <div class="icon-circle">👤</div>
+                    <span class="capture-label">الوجه - يمين</span>
+                </div>
+                <img src="" alt="Right" id="preview-right">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'right')" id="input-right">
+            </div>
+            <div class="capture-card animate-slide-left delay-3" id="capture-left">
+                <div class="placeholder-content">
+                    <div class="icon-circle">👤</div>
+                    <span class="capture-label">الوجه - يسار</span>
+                </div>
+                <img src="" alt="Left" id="preview-left">
+                <input type="file" accept="image/*" onchange="handleFaceUpload(this, 'left')" id="input-left">
+            </div>
+        </div>
+        <div class="btn-continue-container animate-fade-in-up delay-4">
+            <button class="btn btn-primary btn-full" id="btn-continue-to-main" onclick="goToMain()" style="max-width:400px;">
+                ✅ متابعة إلى المتجر
+            </button>
+            <p style="text-align:center;color:#999;font-size:0.8rem;margin-top:8px;">يمكنك تخطي التصوير والمتابعة (التجربة ستكون محدودة)</p>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN SCREEN ==================== -->
+    <div class="screen" id="main-screen">
+        <div class="top-bar">
+            <div class="logo-sm">
+                <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" width="38" height="38">
+                    <circle cx="25" cy="25" r="22" fill="none" stroke="#F48120" stroke-width="2.5"/>
+                    <text x="25" y="20" text-anchor="middle" font-size="9" font-weight="900" fill="#F48120">دار</text>
+                    <text x="25" y="33" text-anchor="middle" font-size="7" font-weight="700" fill="#333">النظارات</text>
+                </svg>
+                <span class="brand-sm">دار النظارات</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span class="user-badge" id="user-badge-display">👤 زائر</span>
+                <button class="logout-btn" onclick="logout()">🚪 خروج</button>
+            </div>
+        </div>
+        <div class="welcome-section animate-fade-in-up">
+            <div class="logo-big">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="70" height="70">
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="#F48120" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="#F48120" stroke-width="1.8" opacity="0.5"/>
+                    <text x="50" y="37" text-anchor="middle" font-size="15" font-weight="900" fill="#F48120">دار</text>
+                    <text x="50" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="#333">النظارات</text>
+                </svg>
+            </div>
+            <h1>اهلاً بك في <span class="highlight">دار النظارات</span></h1>
+            <p style="color:#777;margin-top:4px;">اختر القسم الذي تريد تصفحه</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card animate-slide-right delay-1" onclick="openProducts('sunglasses')">
+                <span class="cat-icon">🕶️</span>
+                <span class="cat-title">نظارات شمسية</span>
+                <span class="cat-badge">جديد</span>
+            </div>
+            <div class="category-card animate-fade-in-up delay-2" onclick="openProducts('medical')">
+                <span class="cat-icon">👓</span>
+                <span class="cat-title">نظارات طبية</span>
+            </div>
+            <div class="category-card animate-fade-in-up delay-3" onclick="openProducts('contacts')">
+                <span class="cat-icon">👁️</span>
+                <span class="cat-title">عدسات لاصقة</span>
+            </div>
+            <div class="category-card animate-slide-left delay-4" onclick="openProducts('protection')">
+                <span class="cat-icon">🛡️</span>
+                <span class="cat-title">نظارات حماية</span>
+            </div>
+        </div>
+        <button class="admin-fab" id="admin-fab-btn" style="display:none;" onclick="openAdminPanel()">
+            ⚙️ تغيير
+        </button>
+    </div>
+
+    <!-- ==================== PRODUCTS SCREEN ==================== -->
+    <div class="screen" id="products-screen">
+        <div class="products-header">
+            <button class="back-btn" onclick="goBackToMain()">←</button>
+            <h3 id="products-title">المنتجات</h3>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+        <button class="add-product-btn" id="add-product-fab" style="display:none;" onclick="showAddProductModal()">+</button>
+    </div>
+
+    <!-- ==================== MODAL OVERLAY ==================== -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal-content"></div>
+    </div>
+
+    <!-- ==================== TOAST CONTAINER ==================== -->
+    <div id="toast-container"></div>
+
+    <script>
+        // ==================== GLOBAL STATE ====================
+        const ADMIN_EMAIL = 'motasembelal31@gmail.com';
+        const WHATSAPP_QR_LINK = 'https://wa.me/qr/WFXDMTVPE2ZSI1';
+        const WHATSAPP_NUMBER = '962790000000'; // قابل للتغيير - الرقم الكامل مع مفتاح الدولة
+        const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+        let currentUser = null; // { email, isGuest, faceData: { front, right, left } }
+        let isAdmin = false;
+        let currentCategory = null; // 'sunglasses' | 'medical' | 'contacts' | 'protection'
+        let selectedFrameForMedical = null; // for medical glasses flow
+        let selectedLensForMedical = null;
+        let prescriptionImage = null;
+
+        // ==================== DATA STORE (localStorage) ====================
+        function getStore() {
+            const data = localStorage.getItem('dar_alnadarat_store');
+            if (data) return JSON.parse(data);
+            // Initialize default data
+            const defaults = {
+                sunglasses: [
+                    { id: 'sg1', name: 'نظارة شمسية كلاسيك - أسود', price: 35, image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=300&fit=crop' },
+                    { id: 'sg2', name: 'نظارة شمسية طيار - ذهبي', price: 45,
+                        image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=300&fit=crop' },
+                    { id: 'sg3', name: 'نظارة شمسية رياضية - رمادي', price: 50,
+                        image: 'https://images.unsplash.com/photo-1577803645773-f96470509666?w=400&h=300&fit=crop' },
+                    { id: 'sg4', name: 'نظارة شمسية دائرية - بني', price: 30,
+                        image: 'https://images.unsplash.com/photo-1508296695146-257a814070b4?w=400&h=300&fit=crop' },
+                ],
+                medical_frames: [
+                    { id: 'mf1', name: 'إطار طبي - أسود كلاسيك', price: 60,
+                        image: 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?w=400&h=300&fit=crop' },
+                    { id: 'mf2', name: 'إطار طبي - شفاف عصري', price: 70,
+                        image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop' },
+                    { id: 'mf3', name: 'إطار طبي - معدن فضي', price: 55,
+                        image: 'https://images.unsplash.com/photo-1501265976584-c2f9737ee63d?w=400&h=300&fit=crop' },
+                    { id: 'mf4', name: 'إطار طبي - بني خشبي', price: 80,
+                        image: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=300&fit=crop' },
+                ],
+                medical_lenses: [
+                    { id: 'ml1', name: 'عدسة قياسية - بلاستيك', price: 25, description: 'عدسة بلاستيكية خفيفة الوزن',
+                        image: 'https://images.unsplash.com/photo-1596541223130-5e225e69a1a8?w=200&h=150&fit=crop' },
+                    { id: 'ml2', name: 'عدسة مضادة للانعكاس', price: 45,
+                        description: 'عدسة بطبقة مضادة للانعكاس والوهج',
+                        image: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?w=200&h=150&fit=crop' },
+                    { id: 'ml3', name: 'عدسة فوتوكروميك (متغيرة)', price: 70,
+                        description: 'تتغير لونها حسب الإضاءة تلقائياً',
+                        image: 'https://images.unsplash.com/photo-1551467300-44f3b44fa860?w=200&h=150&fit=crop' },
+                    { id: 'ml4', name: 'عدسة زرقاء - حماية رقمية', price: 55,
+                        description: 'تحمي من الأشعة الزرقاء للشاشات',
+                        image: 'https://images.unsplash.com/photo-1618482174642-fc527f5c3e73?w=200&h=150&fit=crop' },
+                ],
+                contacts: [
+                    { id: 'cl1', name: 'عدسات لاصقة - أزرق', price: 40, color: '#4A90D9',
+                        description: 'لون أزرق طبيعي جذاب',
+                        image: 'https://images.unsplash.com/photo-1586966897485-4c0a8e2c4cba?w=200&h=150&fit=crop' },
+                    { id: 'cl2', name: 'عدسات لاصقة - أخضر', price: 40, color: '#5B9A5F',
+                        description: 'لون أخضر زمردي أنيق',
+                        image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=200&h=150&fit=crop' },
+                    { id: 'cl3', name: 'عدسات لاصقة - عسلي', price: 35, color: '#C8963E',
+                        description: 'لون عسلي دافئ وجذاب',
+                        image: 'https://images.unsplash.com/photo-1586966897485-4c0a8e2c4cba?w=200&h=150&fit=crop' },
+                    { id: 'cl4', name: 'عدسات لاصقة - رمادي', price: 45, color: '#9E9E9E',
+                        description: 'لون رمادي عصري مميز',
+                        image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=200&h=150&fit=crop' },
+                    { id: 'cl5', name: 'عدسات لاصقة - بنفسجي', price: 50, color: '#8E6FAD',
+                        description: 'لون بنفسجي فريد وجريء',
+                        image: 'https://images.unsplash.com/photo-1586966897485-4c0a8e2c4cba?w=200&h=150&fit=crop' },
+                ],
+                protection: [
+                    { id: 'pf1', name: 'نظارة حماية - شفافة', price:
+                        15,
+                        image: 'https://images.unsplash.com/photo-1508296695146-257a814070b4?w=400&h=300&fit=crop' },
+                    { id: 'pf2', name: 'نظارة حماية - صفراء', price: 18,
+                        image: 'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=300&fit=crop' },
+                    { id: 'pf3', name: 'نظارة حماية مهنية', price: 25,
+                        image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=300&fit=crop' },
+                ],
+                contact_description: 'عدسات لاصقة عالية الجودة بألوان متعددة. اختاري اللون الذي يناسبك!',
+            };
+            saveStore(defaults);
+            return defaults;
+        }
+
+        function saveStore(data) {
+            localStorage.setItem('dar_alnadarat_store', JSON.stringify(data));
+        }
+
+        function getCategoryData(category) {
+            const store = getStore();
+            switch (category) {
+                case 'sunglasses':
+                    return store.sunglasses;
+                case 'medical':
+                    return store.medical_frames;
+                case 'contacts':
+                    return store.contacts;
+                case 'protection':
+                    return store.protection;
+                default:
+                    return [];
+            }
+        }
+
+        function getLensesData() {
+            return getStore().medical_lenses;
+        }
+
+        function getContactDescription() {
+            return getStore().contact_description || '';
+        }
+
+        function saveCategoryData(category, data) {
+            const store = getStore();
+            switch (category) {
+                case 'sunglasses':
+                    store.sunglasses = data;
+                    break;
+                case 'medical':
+                    store.medical_frames = data;
+                    break;
+                case 'contacts':
+                    store.contacts = data;
+                    break;
+                case 'protection':
+                    store.protection = data;
+                    break;
+            }
+            saveStore(store);
+        }
+
+        function saveLensesData(data) {
+            const store = getStore();
+            store.medical_lenses = data;
+            saveStore(store);
+        }
+
+        function saveContactDescription(desc) {
+            const store = getStore();
+            store.contact_description = desc;
+            saveStore(store);
+        }
+
+        // ==================== NAVIGATION ====================
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            const screen = document.getElementById(screenId);
+            if (screen) screen.classList.add('active');
+        }
+
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = msg;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.4s';
+                setTimeout(() => toast.remove(), 400);
+            }, 2200);
+        }
+
+        // ==================== LOGIN ====================
+        function loginWithGoogle() {
+            // محاكاة تسجيل دخول جوجل
+            const mockEmail = prompt('يرجى إدخال البريد الإلكتروني (للتجربة):', 'motasembelal31@gmail.com');
+            if (!mockEmail) return;
+            currentUser = {
+                email: mockEmail,
+                isGuest: false,
+                faceData: null,
+            };
+            isAdmin = (mockEmail.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+            // تحميل بيانات الوجه المحفوظة
+            const savedFaces = localStorage.getItem('dar_alnadarat_faces_' + mockEmail);
+            if (savedFaces) {
+                currentUser.faceData = JSON.parse(savedFaces);
+            }
+            updateUIForUser();
+            if (currentUser.faceData && currentUser.faceData.front) {
+                showScreen('main-screen');
+                updateMainUI();
+            } else {
+                showScreen('face-capture-screen');
+                resetFaceCapture();
+            }
+            showToast(isAdmin ? '✅ تم الدخول كمسؤول (تغيير)' : '✅ تم الدخول بنجاح');
+        }
+
+        function loginAsGuest() {
+            currentUser = {
+                email: 'guest_' + Date.now(),
+                isGuest: true,
+                faceData: null,
+            };
+            isAdmin = false;
+            updateUIForUser();
+            showScreen('face-capture-screen');
+            resetFaceCapture();
+            showToast('👤 تم الدخول كضيف - صور الوجه مؤقتة');
+        }
+
+        function logout() {
+            if (currentUser && currentUser.isGuest) {
+                // مسح بيانات الوجه المؤقتة
+                currentUser = null;
+                sessionStorage.removeItem('dar_guest_faces');
+            } else if (currentUser && !currentUser.isGuest && currentUser.faceData) {
+                // حفظ بيانات الوجه للمستخدم المسجل
+                localStorage.setItem('dar_alnadarat_faces_' + currentUser.email, JSON.stringify(currentUser
+                    .faceData));
+            }
+            currentUser = null;
+            isAdmin = false;
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            currentCategory = null;
+            updateUIForUser();
+            showScreen('login-screen');
+            showToast('👋 تم تسجيل الخروج');
+        }
+
+        function updateUIForUser() {
+            const badge = document.getElementById('user-badge-display');
+            const adminFab = document.getElementById('admin-fab-btn');
+            if (currentUser) {
+                const displayEmail = currentUser.isGuest ? 'زائر' : currentUser.email.split('@')[0];
+                badge.textContent = '👤 ' + displayEmail;
+                if (isAdmin) {
+                    adminFab.style.display = 'flex';
+                } else {
+                    adminFab.style.display = 'none';
+                }
+            } else {
+                badge.textContent = '👤 زائر';
+                adminFab.style.display = 'none';
+            }
+        }
+
+        function updateMainUI() {
+            updateUIForUser();
+            const addFab = document.getElementById('add-product-fab');
+            if (addFab) addFab.style.display = isAdmin ? 'flex' : 'none';
+        }
+
+        // ==================== FACE CAPTURE ====================
+        function resetFaceCapture() {
+            ['front', 'right', 'left'].forEach(angle => {
+                const card = document.getElementById('capture-' + angle);
+                const preview = document.getElementById('preview-' + angle);
+                const input = document.getElementById('input-' + angle);
+                if (card) card.classList.remove('filled');
+                if (preview) preview.src = '';
+                if (input) input.value = '';
+            });
+            if (currentUser) currentUser.faceData = null;
+        }
+
+        function handleFaceUpload(input, angle) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                const preview = document.getElementById('preview-' + angle);
+                const card = document.getElementById('capture-' + angle);
+                if (preview) preview.src = dataUrl;
+                if (card) card.classList.add('filled');
+                if (!currentUser) currentUser = { email: 'guest_' + Date.now(), isGuest: true, faceData: {} };
+                if (!currentUser.faceData) currentUser.faceData = {};
+                currentUser.faceData[angle] = dataUrl;
+                // حفظ مؤقت للضيف
+                if (currentUser.isGuest) {
+                    sessionStorage.setItem('dar_guest_faces', JSON.stringify(currentUser.faceData));
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function goToMain() {
+            if (!currentUser || !currentUser.faceData || !currentUser.faceData.front) {
+                // السماح بالمتابعة بدون صور
+                if (!currentUser) currentUser = { email: 'guest_' + Date.now(), isGuest: true, faceData: {} };
+                if (!currentUser.faceData) currentUser.faceData = {};
+                showToast('⚠️ تم المتابعة بدون صور الوجه - التجربة محدودة');
+            }
+            // حفظ البيانات للمستخدم المسجل
+            if (!currentUser.isGuest && currentUser.faceData && currentUser.faceData.front) {
+                localStorage.setItem('dar_alnadarat_faces_' + currentUser.email, JSON.stringify(currentUser.faceData));
+            }
+            updateUIForUser();
+            updateMainUI();
+            showScreen('main-screen');
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            currentCategory = null;
+        }
+
+        // ==================== PRODUCTS ====================
+        function openProducts(category) {
+            currentCategory = category;
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            updateMainUI();
+            const titles = {
+                sunglasses: '🕶️ نظارات شمسية',
+                medical: '👓 نظارات طبية',
+                contacts: '👁️ عدسات لاصقة',
+                protection: '🛡️ نظارات حماية',
+            };
+            document.getElementById('products-title').textContent = titles[category] || 'المنتجات';
+            document.getElementById('add-product-fab').style.display = isAdmin ? 'flex' : 'none';
+            renderProducts(category);
+            showScreen('products-screen');
+            // إعادة تحريك العناصر
+            setTimeout(() => {
+                document.querySelectorAll('.product-card').forEach((el, i) => {
+                    el.style.animation = `fadeInUp 0.5s ${i*0.08}s ease forwards`;
+                    el.style.opacity = '0';
+                    el.style.animationFillMode = 'forwards';
+                });
+            }, 50);
+        }
+
+        function renderProducts(category) {
+            const grid = document.getElementById('products-grid');
+            const data = getCategoryData(category);
+            grid.innerHTML = '';
+
+            if (category === 'contacts') {
+                // عرض خاص للعدسات اللاصقة
+                const desc = getContactDescription();
+                if (desc) {
+                    const descEl = document.createElement('div');
+                    descEl.style.cssText =
+                        'grid-column:1/-1;background:#fff;padding:16px 20px;border-radius:var(--radius);text-align:center;color:#555;margin-bottom:8px;';
+                    descEl.innerHTML = `<strong>📝 وصف:</strong> ${desc}`;
+                    if (isAdmin) {
+                        descEl.innerHTML +=
+                            ' <button onclick="editContactDesc()" style="margin-right:10px;cursor:pointer;background:var(--orange);color:#fff;border:none;padding:4px 10px;border-radius:12px;font-size:0.75rem;">تعديل</button>';
+                    }
+                    grid.appendChild(descEl);
+                }
+                data.forEach(product => {
+                    const card = createContactCard(product);
+                    grid.appendChild(card);
+                });
+            } else if (category === 'medical') {
+                data.forEach(product => {
+                    const card = createMedicalFrameCard(product);
+                    grid.appendChild(card);
+                });
+            } else {
+                data.forEach(product => {
+                    const card = createProductCard(product, category);
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        function createProductCard(product, category) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%22150%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22%3E🕶️%3C/text%3E%3C/svg%3E'">
+            <div class="product-info">
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">${product.price} دينار</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-sm btn-try" onclick="tryOnProduct('${product.id}', '${category}')">🔍 تجريب</button>
+              <button class="btn-sm btn-select" onclick="selectProduct('${product.id}', '${category}')">✅ اختيار</button>
+            </div>
+            ${isAdmin ? `
+            <div class="admin-actions">
+              <button class="btn-admin-sm" onclick="editProduct('${product.id}', '${category}')">✏️ تعديل</button>
+              <button class="btn-admin-sm danger" onclick="deleteProduct('${product.id}', '${category}')">🗑️ حذف</button>
+            </div>` : ''}
+          `;
+            return card;
+        }
+
+        function createMedicalFrameCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%22150%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22%3E👓%3C/text%3E%3C/svg%3E'">
+            <div class="product-info">
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">${product.price} دينار</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-sm btn-try" onclick="tryOnProduct('${product.id}', 'medical')">🔍 تجريب</button>
+              <button class="btn-sm btn-select" onclick="selectMedicalFrame('${product.id}')">✅ اختيار الإطار</button>
+            </div>
+            ${isAdmin ? `
+            <div class="admin-actions">
+              <button class="btn-admin-sm" onclick="editProduct('${product.id}', 'medical')">✏️ تعديل</button>
+              <button class="btn-admin-sm danger" onclick="deleteProduct('${product.id}', 'medical')">🗑️ حذف</button>
+            </div>` : ''}
+          `;
+            return card;
+        }
+
+        function createContactCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+            <div style="background:#fafafa;height:160px;display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="width:70px;height:70px;border-radius:50%;background:${product.color};box-shadow:0 6px 20px rgba(0,0,0,0.2);border:4px solid #fff;"></div>
+            </div>
+            <div class="product-info">
+              <div class="product-name">${product.name}</div>
+              <div class="product-price">${product.price} دينار</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-sm btn-try" onclick="tryOnContact('${product.id}')">🔍 تجريب</button>
+              <button class="btn-sm btn-select" onclick="selectContact('${product.id}')">✅ اختيار</button>
+            </div>
+            ${isAdmin ? `
+            <div class="admin-actions">
+              <button class="btn-admin-sm" onclick="editProduct('${product.id}', 'contacts')">✏️ تعديل</button>
+              <button class="btn-admin-sm danger" onclick="deleteProduct('${product.id}', 'contacts')">🗑️ حذف</button>
+            </div>` : ''}
+          `;
+            return card;
+        }
+
+        function goBackToMain() {
+            showScreen('main-screen');
+            currentCategory = null;
+            selectedFrameForMedical = null;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            updateMainUI();
+        }
+
+        // ==================== TRY-ON ====================
+        function tryOnProduct(productId, category) {
+            const data = getCategoryData(category);
+            const product = data.find(p => p.id === productId);
+            if (!product) return;
+            const faceData = currentUser && currentUser.faceData ? currentUser.faceData : null;
+            const frontImg = faceData && faceData.front ? faceData.front : null;
+
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>🔍 تجربة ${product.name}</h3>
+            <div class="tryon-container">
+              <canvas id="tryon-canvas" width="350" height="350"></canvas>
+            </div>
+            <div class="tryon-angles">
+              <button class="tryon-angle-btn active" onclick="switchTryonAngle('front', '${product.image}')">📷 أمامي</button>
+              <button class="tryon-angle-btn" onclick="switchTryonAngle('right', '${product.image}')">📷 يمين</button>
+              <button class="tryon-angle-btn" onclick="switchTryonAngle('left', '${product.image}')">📷 يسار</button>
+            </div>
+            <p style="text-align:center;color:#888;font-size:0.8rem;margin-top:8px;">محاكاة تجريبية للنظارة على الوجه</p>
+            <button class="btn btn-primary btn-full" style="margin-top:12px;" onclick="selectProduct('${productId}', '${category}')">✅ اختيار هذه النظارة</button>
+          `;
+            modal.classList.add('active');
+            setTimeout(() => drawTryOn('front', product.image, frontImg), 200);
+        }
+
+        function tryOnContact(productId) {
+            const data = getCategoryData('contacts');
+            const product = data.find(p => p.id === productId);
+            if (!product) return;
+            const faceData = currentUser && currentUser.faceData ? currentUser.faceData : null;
+            const frontImg = faceData && faceData.front ? faceData.front : null;
+
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>👁️ تجربة ${product.name}</h3>
+            <div class="tryon-container">
+              <canvas id="tryon-canvas" width="350" height="350"></canvas>
+            </div>
+            <p style="text-align:center;color:#888;font-size:0.8rem;margin-top:8px;">محاكاة للون العدسات على العين</p>
+            <button class="btn btn-primary btn-full" style="margin-top:12px;" onclick="selectContact('${productId}')">✅ اختيار هذه العدسات</button>
+          `;
+            modal.classList.add('active');
+            setTimeout(() => drawContactTryOn(product.color, frontImg), 200);
+        }
+
+        function drawTryOn(angle, glassesImgSrc, faceImgSrc) {
+            const canvas = document.getElementById('tryon-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#f5f5f5';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const faceImg = new Image();
+            faceImg.crossOrigin = 'anonymous';
+            faceImg.onload = function() {
+                // رسم الوجه
+                const scale = Math.min(canvas.width / faceImg.width, canvas.height / faceImg.height);
+                const fw = faceImg.width * scale;
+                const fh = faceImg.height * scale;
+                const fx = (canvas.width - fw) / 2;
+                const fy = (canvas.height - fh) / 2;
+                ctx.drawImage(faceImg, fx, fy, fw, fh);
+                        // رسم النظارة
+                const glassesImg = new Image();
+                glassesImg.crossOrigin = 'anonymous';
+                glassesImg.onload = function() {
+                    const gw = fw * 0.55;
+                    const gh = gw * (glassesImg.height / glassesImg.width) || gw * 0.35;
+                    const gx = canvas.width / 2 - gw / 2;
+                    const gy = canvas.height / 2 - gh * 1.2;
+                    ctx.globalAlpha = 0.85;
+                    ctx.drawImage(glassesImg, gx, gy, gw, gh);
+                    ctx.globalAlpha = 1;
+                };
+                glassesImg.onerror = function() {
+                    // رسم نظارة افتراضية
+                    ctx.strokeStyle = '#333';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    const cx = canvas.width / 2;
+                    const cy = canvas.height / 2 - fh * 0.08;
+                    const r = fw * 0.13;
+                    ctx.arc(cx - r - 5, cy, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(cx + r + 5, cy, r, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(cx - 5, cy);
+                    ctx.lineTo(cx + 5, cy);
+                    ctx.stroke();
+                    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+                    ctx.fillRect(cx - r - 5 - r, cy - r, r * 2, r * 2);
+                    ctx.fillRect(cx + 5 + r - r, cy - r, r * 2, r * 2);
+                };
+                glassesImg.src = glassesImgSrc;
+            };
+            faceImg.onerror = function() {
+                ctx.fillStyle = '#ddd';
+                ctx.fillRect(50, 50, canvas.width - 100, canvas.height - 100);
+                ctx.fillStyle = '#aaa';
+                ctx.font = '18px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('يرجى تحميل صورة الوجه أولاً', canvas.width / 2, canvas.height / 2);
+                ctx.fillText('للاستفادة من خاصية التجريب', canvas.width / 2, canvas.height / 2 + 30);
+            };
+            if (faceImgSrc) {
+                faceImg.src = faceImgSrc;
+            } else {
+                faceImg.onerror();
+            }
+        }
+
+        function drawContactTryOn(color, faceImgSrc) {
+            const canvas = document.getElementById('tryon-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#f5f5f5';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const faceImg = new Image();
+            faceImg.crossOrigin = 'anonymous';
+            faceImg.onload = function() {
+                const scale = Math.min(canvas.width / faceImg.width, canvas.height / faceImg.height);
+                const fw = faceImg.width * scale;
+                const fh = faceImg.height * scale;
+                const fx = (canvas.width - fw) / 2;
+                const fy = (canvas.height - fh) / 2;
+                ctx.drawImage(faceImg, fx, fy, fw, fh);
+                // رسم لون العدسات على العينين
+                const cx = canvas.width / 2;
+                const cy = canvas.height / 2 - fh * 0.06;
+                const eyeR = fw * 0.06;
+                ctx.fillStyle = color;
+                ctx.globalAlpha = 0.55;
+                ctx.beginPath();
+                ctx.arc(cx - fw * 0.08, cy, eyeR, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(cx + fw * 0.08, cy, eyeR, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.arc(cx - fw * 0.08, cy, eyeR * 0.35, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(cx + fw * 0.08, cy, eyeR * 0.35, 0, Math.PI * 2);
+                ctx.fill();
+            };
+            faceImg.onerror = function() {
+                ctx.fillStyle = '#ddd';
+                ctx.fillRect(50, 50, canvas.width - 100, canvas.height - 100);
+                ctx.fillStyle = '#aaa';
+                ctx.font = '16px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('يرجى تحميل صورة الوجه أولاً', canvas.width / 2, canvas.height / 2);
+            };
+            if (faceImgSrc) faceImg.src = faceImgSrc;
+            else faceImg.onerror();
+        }
+
+        function switchTryonAngle(angle, glassesImgSrc) {
+            const faceData = currentUser && currentUser.faceData ? currentUser.faceData : null;
+            const imgSrc = faceData && faceData[angle] ? faceData[angle] : (faceData ? faceData.front : null);
+            document.querySelectorAll('.tryon-angle-btn').forEach(b => b.classList.remove('active'));
+            const btns = document.querySelectorAll('.tryon-angle-btn');
+            if (angle === 'front' && btns[0]) btns[0].classList.add('active');
+            if (angle === 'right' && btns[1]) btns[1].classList.add('active');
+            if (angle === 'left' && btns[2]) btns[2].classList.add('active');
+            drawTryOn(angle, glassesImgSrc, imgSrc);
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.remove('active');
+        }
+
+        // ==================== SELECT / WHATSAPP ====================
+        function selectProduct(productId, category) {
+            const data = getCategoryData(category);
+            const product = data.find(p => p.id === productId);
+            if (!product) return;
+            const message = `مرحباً، أرغب في شراء:\n📦 ${product.name}\n💰 السعر: ${product.price} دينار\n📸 الصورة: ${product.image}`;
+            sendToWhatsApp(message);
+            closeModal();
+        }
+
+        function selectMedicalFrame(frameId) {
+            const data = getCategoryData('medical');
+            const frame = data.find(p => p.id === frameId);
+            if (!frame) return;
+            selectedFrameForMedical = frame;
+            selectedLensForMedical = null;
+            prescriptionImage = null;
+            showLensSelectionModal();
+        }
+
+        function showLensSelectionModal() {
+            const lenses = getLensesData();
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>🔬 اختر نوع العدسة الطبية</h3>
+            <p style="text-align:center;color:#777;font-size:0.85rem;">الإطار المختار: <strong>${selectedFrameForMedical.name}</strong></p>
+            <div class="lens-options-grid">
+              ${lenses.map(l => `
+                <div class="lens-option-card" id="lens-card-${l.id}" onclick="selectLens('${l.id}')">
+                  <img src="${l.image}" alt="${l.name}" style="width:60px;height:45px;object-fit:cover;border-radius:6px;margin-bottom:6px;" onerror="this.style.display='none'">
+                  <div style="font-weight:700;font-size:0.85rem;">${l.name}</div>
+                  <div style="color:var(--orange);font-weight:600;">${l.price} دينار</div>
+                  <div style="font-size:0.7rem;color:#888;">${l.description}</div>
+                </div>
+              `).join('')}
+            </div>
+            <div style="margin-top:12px;display:none;" id="prescription-section">
+              <div class="prescription-upload" onclick="document.getElementById('prescription-input').click()">
+                📄 <span id="prescription-label">اضغط لإرفاق صورة الفحص الطبي</span>
+              </div>
+              <input type="file" id="prescription-input" accept="image/*" style="display:none;" onchange="handlePrescriptionUpload(this)">
+              <button class="btn btn-primary btn-full" style="margin-top:10px;" onclick="confirmMedicalOrder()">✅ موافق - إرسال الطلب</button>
+            </div>
+            ${isAdmin ? `<button class="btn btn-sm" style="margin-top:10px;width:100%;background:#f0f0f0;" onclick="showAddLensModal()">➕ إضافة عدسة جديدة</button>` : ''}
+          `;
+            modal.classList.add('active');
+        }
+
+        function selectLens(lensId) {
+            const lenses = getLensesData();
+            selectedLensForMedical = lenses.find(l => l.id === lensId);
+            document.querySelectorAll('.lens-option-card').forEach(c => c.classList.remove('selected'));
+            const card = document.getElementById('lens-card-' + lensId);
+            if (card) card.classList.add('selected');
+            document.getElementById('prescription-section').style.display = 'block';
+        }
+
+        function handlePrescriptionUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                prescriptionImage = e.target.result;
+                document.getElementById('prescription-label').textContent = '✅ تم إرفاق صورة الفحص';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function confirmMedicalOrder() {
+            if (!selectedFrameForMedical || !selectedLensForMedical) {
+                showToast('⚠️ الرجاء اختيار الإطار والعدسة');
+                return;
+            }
+            const message =
+                `مرحباً، أرغب في طلب نظارة طبية:\n👓 الإطار: ${selectedFrameForMedical.name} - ${selectedFrameForMedical.price} دينار\n🔬 العدسة: ${selectedLensForMedical.name} - ${selectedLensForMedical.price} دينار\n💰 المجموع: ${selectedFrameForMedical.price + selectedLensForMedical.price} دينار\n📸 صورة الإطار: ${selectedFrameForMedical.image}\n📸 صورة العدسة: ${selectedLensForMedical.image}` +
+                (prescriptionImage ? '\n📄 صورة الفحص مرفقة' : '');
+            sendToWhatsApp(message);
+            closeModal();
+            showToast('✅ تم إرسال الطلب إلى واتساب');
+        }
+
+        function selectContact(productId) {
+            const data = getCategoryData('contacts');
+            const product = data.find(p => p.id === productId);
+            if (!product) return;
+            const message =
+                `مرحباً، أرغب في شراء عدسات لاصقة:\n👁️ ${product.name}\n🎨 اللون: ${product.color}\n💰 السعر: ${product.price} دينار\n📸 الصورة: ${product.image}`;
+            sendToWhatsApp(message);
+            closeModal();
+            showToast('✅ تم إرسال الطلب إلى واتساب');
+        }
+
+        function sendToWhatsApp(message) {
+            const encoded = encodeURIComponent(message);
+            const url = `${WHATSAPP_URL}?text=${encoded}`;
+            window.open(url, '_blank');
+        }
+
+        // ==================== ADMIN FUNCTIONS ====================
+        function openAdminPanel() {
+            if (!isAdmin) return;
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>⚙️ لوحة التحكم - تغيير</h3>
+            <p style="text-align:center;color:#777;">مرحباً ${ADMIN_EMAIL}</p>
+            <button class="btn btn-primary btn-full" style="margin-bottom:8px;" onclick="closeModal();openProducts('sunglasses');">🕶️ إدارة النظارات الشمسية</button>
+            <button class="btn btn-primary btn-full" style="margin-bottom:8px;" onclick="closeModal();openProducts('medical');">👓 إدارة النظارات الطبية</button>
+            <button class="btn btn-primary btn-full" style="margin-bottom:8px;" onclick="closeModal();openProducts('contacts');">👁️ إدارة العدسات اللاصقة</button>
+            <button class="btn btn-primary btn-full" style="margin-bottom:8px;" onclick="closeModal();openProducts('protection');">🛡️ إدارة نظارات الحماية</button>
+            <button class="btn btn-sm btn-full" style="background:#f5f5f5;" onclick="closeModal();showAddLensModal();">🔬 إدارة أنواع العدسات الطبية</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function showAddProductModal() {
+            if (!isAdmin || !currentCategory) return;
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            const isContact = currentCategory === 'contacts';
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>➕ إضافة منتج جديد</h3>
+            <div class="form-group"><label>اسم المنتج</label><input id="add-name" type="text" placeholder="أدخل الاسم"></div>
+            <div class="form-group"><label>السعر (دينار)</label><input id="add-price" type="number" placeholder="0"></div>
+            <div class="form-group"><label>رابط الصورة</label><input id="add-image" type="text" placeholder="https://..."></div>
+            ${isContact ? '<div class="form-group"><label>لون العدسة (كود HEX)</label><input id="add-color" type="text" placeholder="#F48120"></div>' : ''}
+            <button class="btn btn-primary btn-full" onclick="addNewProduct()">✅ إضافة</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function addNewProduct() {
+            const name = document.getElementById('add-name')?.value.trim();
+            const price = parseFloat(document.getElementById('add-price')?.value) || 0;
+            const image = document.getElementById('add-image')?.value.trim();
+            const color = document.getElementById('add-color')?.value.trim();
+            if (!name) { showToast('⚠️ الرجاء إدخال اسم المنتج');
+                return; }
+            const data = getCategoryData(currentCategory);
+            const newProduct = {
+                id: 'p_' + Date.now(),
+                name,
+                price,
+                image: image || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%22150%22 y=%22110%22 text-anchor=%22middle%22 fill=%22%23ccc%22 font-size=%2230%22%3E📷%3C/text%3E%3C/svg%3E',
+            };
+            if (currentCategory === 'contacts' && color) newProduct.color = color;
+            if (currentCategory === 'contacts' && !newProduct.color) newProduct.color = '#cccccc';
+            if (currentCategory === 'contacts') newProduct.description = '';
+            data.push(newProduct);
+            saveCategoryData(currentCategory, data);
+            closeModal();
+            renderProducts(currentCategory);
+            showToast('✅ تمت الإضافة بنجاح');
+        }
+
+        function editProduct(productId, category) {
+            if (!isAdmin) return;
+            const data = getCategoryData(category);
+            const product = data.find(p => p.id === productId);
+            if (!product) return;
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            const isContact = category === 'contacts';
+            content.innerHTML = `
+            <button class="close-modal"
+            onclick="closeModal()">✕</button>
+            <h3>✏️ تعديل المنتج</h3>
+            <div class="form-group"><label>الاسم</label><input id="edit-name" value="${product.name}"></div>
+            <div class="form-group"><label>السعر</label><input id="edit-price" type="number" value="${product.price}"></div>
+            <div class="form-group"><label>رابط الصورة</label><input id="edit-image" value="${product.image || ''}"></div>
+            ${isContact ? `<div class="form-group"><label>اللون</label><input id="edit-color" value="${product.color || ''}"></div>` : ''}
+            <button class="btn btn-primary btn-full" onclick="saveEditProduct('${productId}', '${category}')">💾 حفظ</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function saveEditProduct(productId, category) {
+            const name = document.getElementById('edit-name')?.value.trim();
+            const price = parseFloat(document.getElementById('edit-price')?.value) || 0;
+            const image = document.getElementById('edit-image')?.value.trim();
+            const color = document.getElementById('edit-color')?.value.trim();
+            if (!name) { showToast('⚠️ الاسم مطلوب');
+                return; }
+            const data = getCategoryData(category);
+            const idx = data.findIndex(p => p.id === productId);
+            if (idx >= 0) {
+                data[idx].name = name;
+                data[idx].price = price;
+                data[idx].image = image || data[idx].image;
+                if (category === 'contacts' && color) data[idx].color = color;
+                saveCategoryData(category, data);
+            }
+            closeModal();
+            renderProducts(category);
+            showToast('✅ تم الحفظ');
+        }
+
+        function deleteProduct(productId, category) {
+            if (!isAdmin) return;
+            if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+            let data = getCategoryData(category);
+            data = data.filter(p => p.id !== productId);
+            saveCategoryData(category, data);
+            renderProducts(category);
+            showToast('🗑️ تم الحذف');
+        }
+
+        function editContactDesc() {
+            if (!isAdmin) return;
+            const desc = getContactDescription();
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>📝 تعديل وصف العدسات اللاصقة</h3>
+            <div class="form-group"><textarea id="edit-desc" rows="4">${desc}</textarea></div>
+            <button class="btn btn-primary btn-full" onclick="saveContactDesc()">💾 حفظ</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function saveContactDesc() {
+            const desc = document.getElementById('edit-desc')?.value.trim() || '';
+            saveContactDescription(desc);
+            closeModal();
+            if (currentCategory === 'contacts') renderProducts('contacts');
+            showToast('✅ تم حفظ الوصف');
+        }
+
+        function showAddLensModal() {
+            if (!isAdmin) return;
+            const lenses = getLensesData();
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>🔬 إدارة العدسات الطبية</h3>
+            ${lenses.map(l => `
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px;border:1px solid #eee;border-radius:8px;margin-bottom:6px;">
+                <span>${l.name} - ${l.price} دينار</span>
+                <div>
+                  <button class="btn-admin-sm" onclick="editLensItem('${l.id}')">✏️</button>
+                  <button class="btn-admin-sm danger" onclick="deleteLensItem('${l.id}')">🗑️</button>
+                </div>
+              </div>
+            `).join('')}
+            <button class="btn btn-primary btn-full" style="margin-top:10px;" onclick="showAddLensForm()">➕ إضافة عدسة جديدة</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function showAddLensForm() {
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>➕ إضافة عدسة طبية</h3>
+            <div class="form-group"><label>اسم العدسة</label><input id="lens-name"></div>
+            <div class="form-group"><label>السعر</label><input id="lens-price" type="number"></div>
+            <div class="form-group"><label>الوصف</label><input id="lens-desc"></div>
+            <div class="form-group"><label>رابط الصورة</label><input id="lens-image"></div>
+            <button class="btn btn-primary btn-full" onclick="addLensItem()">✅ إضافة</button>
+          `;
+        }
+
+        function addLensItem() {
+            const name = document.getElementById('lens-name')?.value.trim();
+            const price = parseFloat(document.getElementById('lens-price')?.value) || 0;
+            const desc = document.getElementById('lens-desc')?.value.trim();
+            const image = document.getElementById('lens-image')?.value.trim();
+            if (!name) { showToast('⚠️ الاسم مطلوب');
+                return; }
+            const lenses = getLensesData();
+            lenses.push({ id: 'ml_' + Date.now(), name, price, description: desc, image: image || '' });
+            saveLensesData(lenses);
+            closeModal();
+            showToast('✅ تمت الإضافة');
+        }
+
+        function editLensItem(lensId) {
+            const lenses = getLensesData();
+            const lens = lenses.find(l => l.id === lensId);
+            if (!lens) return;
+            const modal = document.getElementById('modal-overlay');
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+            <button class="close-modal" onclick="closeModal()">✕</button>
+            <h3>✏️ تعديل العدسة</h3>
+            <div class="form-group"><label>الاسم</label><input id="lens-name" value="${lens.name}"></div>
+            <div class="form-group"><label>السعر</label><input id="lens-price" type="number" value="${lens.price}"></div>
+            <div class="form-group"><label>الوصف</label><input id="lens-desc" value="${lens.description || ''}"></div>
+            <div class="form-group"><label>الصورة</label><input id="lens-image" value="${lens.image || ''}"></div>
+            <button class="btn btn-primary btn-full" onclick="saveLensEdit('${lensId}')">💾 حفظ</button>
+          `;
+            modal.classList.add('active');
+        }
+
+        function saveLensEdit(lensId) {
+            const name = document.getElementById('lens-name')?.value.trim();
+            const price = parseFloat(document.getElementById('lens-price')?.value) || 0;
+            const desc = document.getElementById('lens-desc')?.value.trim();
+            const image = document.getElementById('lens-image')?.value.trim();
+            const lenses = getLensesData();
+            const idx = lenses.findIndex(l => l.id === lensId);
+            if (idx >= 0) {
+                lenses[idx].name = name;
+                lenses[idx].price = price;
+                lenses[idx].description = desc;
+                lenses[idx].image = image;
+                saveLensesData(lenses);
+            }
+            closeModal();
+            showToast('✅ تم الحفظ');
+        }
+
+        function deleteLensItem(lensId) {
+            if (!confirm('حذف هذه العدسة؟')) return;
+            let lenses = getLensesData();
+            lenses = lenses.filter(l => l.id !== lensId);
+            saveLensesData(lenses);
+            closeModal();
+            showToast('🗑️ تم الحذف');
+        }
+
+        // ==================== INIT ====================
+        function init() {
+            // التحقق من وجود مستخدم مسجل مسبقاً
+            const savedSession = sessionStorage.getItem('dar_current_session');
+            if (savedSession) {
+                const session = JSON.parse(savedSession);
+                currentUser = session.user;
+                isAdmin = session.isAdmin;
+                if (currentUser && !currentUser.isGuest && !currentUser.faceData) {
+                    const savedFaces = localStorage.getItem('dar_alnadarat_faces_' + currentUser.email);
+                    if (savedFaces) currentUser.faceData = JSON.parse(savedFaces);
+                }
+                if (currentUser && currentUser.isGuest && !currentUser.faceData) {
+                    const guestFaces = sessionStorage.getItem('dar_guest_faces');
+                    if (guestFaces) currentUser.faceData = JSON.parse(guestFaces);
+                }
+                updateUIForUser();
+                updateMainUI();
+                showScreen('main-screen');
+            } else {
+                showScreen('login-screen');
+            }
+            // حفظ الجلسة عند الخروج من الصفحة
+            window.addEventListener('beforeunload', () => {
+                if (currentUser) {
+                    sessionStorage.setItem('dar_current_session', JSON.stringify({ user: currentUser,
+                        isAdmin }));
+                    if (!currentUser.isGuest && currentUser.faceData) {
+                        localStorage.setItem('dar_alnadarat_faces_' + currentUser.email, JSON.stringify(
+                            currentUser.faceData));
+                    }
+                    if (currentUser.isGuest && currentUser.faceData) {
+                        sessionStorage.setItem('dar_guest_faces', JSON.stringify(currentUser.faceData));
+                    }
+                }
+            });
+            // إغلاق المودال عند النقر خارجه
+            document.getElementById('modal-overlay').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            // تأكد من وجود البيانات الافتراضية
+            getStore();
+        }
+
+        init();
+        console.log('✅ موقع دار النظارات جاهز للعمل');
+        console.log('👤 الإيميل المسؤول:', ADMIN_EMAIL);
+        console.log('📱 واتساب:', WHATSAPP_URL);
+        console.log('🎨 الألوان: برتقالي #F48120 | أبيض #FFFFFF');
+    </script>
+</body>
+</html>
+```
